@@ -1,0 +1,30 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Effectuer un achat</h1>
+
+<form action="/acheter/post" method="get">
+    <table class="table">
+    <tr>
+        <th>Libelle</th>
+        <th>Prix</th>
+        <th>Quantité dans l'inventaire</th>
+        <th>Quantité à acheter</th>
+    </tr>
+    {{#articles}}
+    <tr>
+        <td>{{libelle}}</td>
+        <td>{{prix}}</td>
+        <td>{{quantite}}</td>
+        <td><input name="achat[{{id}}]" value="0"/></td>
+    </tr>
+    {{/articles}}
+    </table>
+    <button type="submit" class="btn btn-primary">Acheter</button>
+  </form>
+
+</body>
+</html>

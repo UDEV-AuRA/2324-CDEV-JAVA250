@@ -1,0 +1,36 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Ajout/Modification article</h1>
+
+{{#article}}
+<form action="/articles" method="post">
+  <div class="form-group">
+    <label for="libelle">Libelle</label>
+    <input type="text" class="form-control" id="libelle" name="libelle" value={{libelle}}>
+  </div>
+  <div class="form-group">
+    <label for="prix">prix</label>
+    <input type="text" class="form-control" id="prix" name="prix" value={{prix}}>
+  </div>
+  <div class="form-group">
+    <label for="quantite">quantite</label>
+    <input type="text" class="form-control" id="quantite" name="quantite" value={{quantite}}>
+  </div>
+
+  {{#id}}
+        <button type="submit" class="btn btn-primary" formaction="/articles/{{id}}">Modifier</button>
+  {{/id}}
+
+  {{^id}}
+    <button type="submit" class="btn btn-primary" formaction="/articles/create">Créer</button>
+  {{/id}}
+
+  </form>
+{{/article}}
+
+</body>
+</html>
