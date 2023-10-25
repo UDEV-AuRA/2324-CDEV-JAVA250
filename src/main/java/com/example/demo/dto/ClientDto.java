@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import java.time.LocalDate;
+
 /**
  * Classe permettant d'exposer des données au format JSON au client.
  */
@@ -7,11 +9,13 @@ public class ClientDto {
     private Long id;
     private String nom;
     private String prenom;
+    private int age;
 
-    public ClientDto(Long id, String nom, String prenom) {
+    public ClientDto(Long id, String nom, String prenom, LocalDate dateNaissance) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
+        this.age = LocalDate.now().getYear() - dateNaissance.getYear();
     }
 
     public Long getId() {
@@ -36,5 +40,13 @@ public class ClientDto {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

@@ -33,10 +33,10 @@ public class ExportClientController {
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; filename=\"export-clients.csv\"");
         PrintWriter writer = response.getWriter();
-        writer.println("Nom;Prénom");
+        writer.println("Nom;Prénom;Age");
         List<ClientDto> clients = clientService.findAll();
         for (ClientDto client : clients) {
-            writer.println(client.getNom() + ";" + client.getPrenom());
+            writer.println(client.getNom() + ";" + client.getPrenom() + ";" + client.getAge());
         }
     }
 

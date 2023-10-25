@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
+import java.time.LocalDate;
+
 import com.example.demo.entity.Article;
+import com.example.demo.entity.Client;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
@@ -33,6 +36,17 @@ public class InitData implements ApplicationListener<ApplicationReadyEvent> {
         Article a4 = createArticle("Grattoir pour Chat en Forme de Platine de DJ", 23.14, "https://static.hitek.fr/img/actualite/2016/08/26/61griray9-l-sx522.jpg");
         Article a5 = createArticle("Jay nothing", 2, "https://static.hitek.fr/img/actualite/2016/08/26/61vu-jqjygl-sy679.jpg");
         Article a6 = createArticle("UN AFFINEUR DE VISAGE", 52, "https://static.hitek.fr/img/actualite/2016/08/26/w_41r-1yapf5l.jpg");
+
+        createClient("John", "Doe", LocalDate.of(1990, 1, 18));
+        createClient("Paul", "Dugars", LocalDate.of(1995, 3, 1));
+    }
+
+    private void createClient(String prenom, String nom, LocalDate dateNaissance) {
+        Client c = new Client();
+        c.setNom(nom);
+        c.setPrenom(prenom);
+        c.setDateNaissance(dateNaissance);
+        entityManager.persist(c);
     }
 
     private Article createArticle(String libelle, double prix, String imageUrl) {
