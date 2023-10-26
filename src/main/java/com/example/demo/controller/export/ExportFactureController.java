@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 /**
@@ -34,6 +35,19 @@ public class ExportFactureController {
         Paragraph paragrapheHeader1 = new Paragraph();
         paragrapheHeader1.add("hello");
         document.add(paragrapheHeader1);
+
+        PdfPTable table = new PdfPTable(4);
+        table.addCell("Article");
+        table.addCell("Prix unitaire");
+        table.addCell("Quantité");
+        table.addCell("Prix");
+
+        table.addCell("exemple1");
+        table.addCell("22");
+        table.addCell("2");
+        table.addCell("44");
+
+        document.add(table);
         document.close();
     }
 }
