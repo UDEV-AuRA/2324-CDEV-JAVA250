@@ -11,11 +11,11 @@ public class ClientDto {
     private String prenom;
     private int age;
 
-    public ClientDto(Long id, String nom, String prenom, LocalDate dateNaissance) {
+    public ClientDto(Long id, String nom, String prenom, int age) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.age = LocalDate.now().getYear() - dateNaissance.getYear();
+        this.age = age;
     }
 
     public Long getId() {
